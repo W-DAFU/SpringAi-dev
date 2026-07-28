@@ -19,23 +19,6 @@ SpringAi-dev/
 | --- | --- | --- |
 | `SpringAi-Voice` | Spring AI 语音能力练习项目 | 文本聊天、语音转文字、可选的文字转语音回复 |
 
-### SpringAi-Voice
-
-`SpringAi-Voice` 是一个基于 Spring Boot 和 Spring AI 的语音交互练习模块。
-
-当前功能：
-
-- 接收文本输入，并发送给聊天模型生成回复。
-- 接收上传的音频文件，并将语音转写为文本。
-- 支持把 AI 的文本回复转换为音频。
-- 使用 OpenAI 兼容接口配置，当前配置指向 `application.yml` 中的 SiliconFlow 地址。
-
-主要入口：
-
-- 启动类：`com.ye.SpringAiYe01Application`
-- 接口控制器：`com.ye.controller.SpringAiController`
-- 接口地址：`POST /api/chat`
-- 请求格式：`multipart/form-data`
 
 ## 添加新的练习模块
 
