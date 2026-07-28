@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    # Spring Boot 应用名称，主要用于日志、监控、服务注册等场景。
+    name: YE01
+
+  ai:
+    # 模型供应商选择器。
+    # 当项目同时引入多个 Spring AI starter（例如 openai + ollama）时，用这里指定默认使用哪个供应商。
+    # 如果项目只引入 spring-ai-starter-model-openai，这一段可以不写，Spring AI 会默认启用 OpenAI 兼容模型。
+    model:
+      # 聊天模型默认使用 OpenAI 兼容实现；这里会走下面的 spring.ai.openai.chat 配置。
+      chat: openai
+      audio:
+        # 文字转语音默认使用 OpenAI 兼容实现；这里会走 spring.ai.openai.audio.speech 配置。
+        speech: openai
+        # 语音转文字默认使用 OpenAI 兼容实现；这里会走 spring.ai.openai.audio.transcription 配置。
+        transcription: openai
+
+    openai:
+      # 硅基流动兼容 OpenAI API，因此使用 Spring AI 的 openai 配置项。
+      # 不建议把真实 key 写死在配置文件里，启动前在系统环境变量中设置 SILICONFLOW_API_KEY。
+      api-key: ${SILICONFLOW_API_KEY:sk-fgwmxxx}
+
+      # OpenAI 兼容接口的根地址。
+      # 注意这里写到 /v1 即可，不要写成 /v1/chat/completions 或 /v1/audio/speech，
+      # Spring AI 会根据 Chat、TTS、STT 自动拼接具体接口路径。
+      base-url: https://api.siliconflow.cn/v1
+
+      # AI 聊天配置。
+      chat:
+        # 聊天模型名称，需要使用硅基流动平台上支持的 OpenAI 兼容聊天模型。
+        model: deepseek-ai/DeepSeek-V4-Flash
+
+      audio:
+        # 文字转语音（Text To Speech, TTS）配置。
+        speech:
+          # TTS 模型名称，需要使用硅基流动平台支持的语音合成模型。
+          model: FunAudioLLM/CosyVoice2-0.5B
+
+          # 发音人/音色。具体取值以硅基流动模型文档为准。
+          voice: fnlp/MOSS-TTSD-v0.5:alex
+
+          # 返回的音频格式，常见值包括 mp3、wav 等；需要和供应商接口支持的格式一致。
+          response-format: mp3
+
+        # 语音转文字（Speech To Text, STT）配置。
+        transcription:
+          # STT 模型名称，需要使用硅基流动平台支持的语音识别模型。
+          model: TeleAI/TeleSpeechASR
+
+          # 转写结果格式。json 表示返回结构化 JSON 结果。
+          response-format: json
+
