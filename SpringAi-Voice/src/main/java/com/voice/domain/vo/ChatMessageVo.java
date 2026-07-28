@@ -1,6 +1,6 @@
-package com.ye.domain.vo;
+package com.voice.domain.vo;
 
-import com.ye.domain.bo.ChatMessageBo;
+import com.voice.domain.bo.ChatMessageBo;
 import lombok.Data;
 
 /**

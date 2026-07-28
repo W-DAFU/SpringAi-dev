@@ -1,4 +1,4 @@
-package com.ye.domain.vo;
+package com.voice.domain.vo;
 
 import lombok.Data;
 

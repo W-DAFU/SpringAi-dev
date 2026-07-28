@@ -1,8 +1,8 @@
-package com.ye.controller;
+package com.voice.controller;
 
-import com.ye.domain.bo.ChatMessageBo;
-import com.ye.domain.vo.ChatMessageVo;
-import com.ye.domain.vo.R;
+import com.voice.domain.bo.ChatMessageBo;
+import com.voice.domain.vo.ChatMessageVo;
+import com.voice.domain.vo.R;
 import org.springframework.ai.audio.transcription.AudioTranscriptionPrompt;
 import org.springframework.ai.audio.transcription.TranscriptionModel;
 import org.springframework.ai.audio.tts.TextToSpeechModel;

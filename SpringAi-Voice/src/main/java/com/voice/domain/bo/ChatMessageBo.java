@@ -1,4 +1,4 @@
-package com.ye.domain.bo;
+package com.voice.domain.bo;
 
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
