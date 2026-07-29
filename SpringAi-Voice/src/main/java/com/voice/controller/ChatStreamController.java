@@ -66,6 +66,7 @@ public class ChatStreamController {
 
         streamExecutor.execute(() -> {
             try {
+                send(emitter, "start", Map.of("started", true));
                 chatStreamService.stream(chat)
                         .doOnNext(block -> sendUnchecked(emitter, "block", block))
                         .blockLast();

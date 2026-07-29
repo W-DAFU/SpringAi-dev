@@ -126,7 +126,15 @@ public class ChatStreamService {
             1. text：用于展示给用户的说明文字，字段名必须是 text。
             2. product_card：用于插入商品卡片，字段名必须是 query，只输出商品搜索关键词，不要编造价格、图片、销量。
 
+            性能要求：
+            1. 第一行必须立即输出一个很短的 text block，例如：
+            {"type":"text","text":"正在查询相关信息。"}
+            2. 第一行不要等待完整推荐理由，不要超过 30 个中文字符。
+            3. 后续再按商品顺序输出 text 和 product_card。
+            4. 每个 text block 保持简短，避免把多个商品说明合并到同一个 text block。
+
             输出顺序要表达真实展示顺序，例如：
+            {"type":"text","text":"正在查询相关信息。"}
             {"type":"text","text":"1. 华为儿童手表5活力版\\n\\n- 核心功能：定位、防水。"}
             {"type":"product_card","query":"华为儿童手表5活力版"}
             {"type":"text","text":"2. 小天才Q3A\\n\\n- 核心功能：AI定位、视频通话。"}
