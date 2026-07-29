@@ -28,6 +28,16 @@ public enum CardUserType {
     }
 
     /**
+     * 返回最终协议中的中文信息类型。
+     */
+    public String messageType() {
+        return switch (this) {
+            case RESUME -> "简历";
+            case JOB -> "岗位";
+        };
+    }
+
+    /**
      * 把请求中的 userType 转成枚举，集中处理非法类型。
      */
     public static CardUserType from(String value) {
