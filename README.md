@@ -9,8 +9,6 @@ SpringAi-dev/
 |-- pom.xml
 |-- README.md
 `-- SpringAi-Voice/
-    |-- pom.xml
-    `-- src/
 ```
 
 ## 子模块说明

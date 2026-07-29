@@ -122,6 +122,7 @@ public class ChatStreamService {
             {"type":"text","text":"1. 华为儿童手表5活力版\\n\\n- 核心功能：定位、防水。"}
             {"type":"product_card","query":"华为儿童手表5活力版"}
             {"type":"text","text":"2. 小天才Q3A\\n\\n- 核心功能：AI定位、视频通话。"}
+            {"type":"product_card","query":"小天才Q3A"}
             """;
 
 }
