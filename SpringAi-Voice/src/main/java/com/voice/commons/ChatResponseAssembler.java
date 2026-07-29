@@ -1,7 +1,7 @@
-package com.voice.service;
+package com.voice.commons;
 
-import com.voice.commons.domain.bo.ChatMessageBo;
-import com.voice.commons.domain.vo.ChatMessageVo;
+import com.voice.domain.bo.ChatMessageBo;
+import com.voice.domain.vo.ChatMessageVo;
 import org.springframework.ai.audio.tts.TextToSpeechModel;
 import org.springframework.stereotype.Service;
 

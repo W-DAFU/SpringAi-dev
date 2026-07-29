@@ -1,7 +1,7 @@
-package com.voice.service;
+package com.voice.service.stream;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.voice.commons.domain.vo.ChatStreamBlockVo;
+import com.voice.domain.vo.ChatStreamBlockVo;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

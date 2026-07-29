@@ -1,6 +1,7 @@
 package com.voice.service;
 
-import com.voice.commons.domain.bo.ChatMessageBo;
+import com.voice.commons.ChatInputResolver;
+import com.voice.domain.bo.ChatMessageBo;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;

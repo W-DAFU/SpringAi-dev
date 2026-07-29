@@ -1,6 +1,6 @@
-package com.voice.service;
+package com.voice.commons;
 
-import com.voice.commons.domain.bo.ChatMessageBo;
+import com.voice.domain.bo.ChatMessageBo;
 import org.springframework.ai.audio.transcription.AudioTranscriptionPrompt;
 import org.springframework.ai.audio.transcription.TranscriptionModel;
 import org.springframework.http.HttpStatus;

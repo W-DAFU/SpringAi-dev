@@ -1,7 +1,7 @@
-package com.voice.service;
+package com.voice.service.stream;
 
-import com.voice.commons.domain.bo.ChatMessageBo;
-import com.voice.commons.domain.vo.ChatStreamBlockVo;
+import com.voice.domain.bo.ChatMessageBo;
+import com.voice.domain.vo.ChatStreamBlockVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.audio.tts.TextToSpeechModel;
 

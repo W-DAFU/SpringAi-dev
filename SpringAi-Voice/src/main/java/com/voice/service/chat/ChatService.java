@@ -1,14 +1,16 @@
-package com.voice.service;
+package com.voice.service.chat;
 
-import com.voice.commons.domain.bo.ChatMessageBo;
-import com.voice.commons.domain.vo.ChatMessageVo;
+import com.voice.commons.ChatInputResolver;
+import com.voice.commons.ChatResponseAssembler;
+import com.voice.domain.bo.ChatMessageBo;
+import com.voice.domain.vo.ChatMessageVo;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
 /**
  * 普通非流式聊天服务。
  * <p>
- * 该服务承接原控制器中的普通聊天编排逻辑，负责输入解析、聊天模型调用、
+ * 该服务承接原控制器中的普通聊天编排逻辑，负责输入解析、聊天模型调用，
  * 以及普通响应对象组装。
  */
 @Service

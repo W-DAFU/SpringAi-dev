@@ -1,4 +1,4 @@
-package com.voice.commons.domain.vo;
+package com.voice.domain.vo;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -1,9 +1,9 @@
 package com.voice.controller;
 
-import com.voice.commons.domain.bo.ChatMessageBo;
-import com.voice.commons.domain.vo.ChatMessageVo;
-import com.voice.commons.domain.vo.R;
-import com.voice.service.ChatService;
+import com.voice.domain.bo.ChatMessageBo;
+import com.voice.domain.vo.ChatMessageVo;
+import com.voice.domain.vo.R;
+import com.voice.service.chat.ChatService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;

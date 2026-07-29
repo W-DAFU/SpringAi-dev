@@ -1,8 +1,8 @@
-package com.voice.service;
+package com.voice.service.stream;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.voice.commons.domain.vo.ChatStreamBlockVo;
+import com.voice.domain.vo.ChatStreamBlockVo;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.Optional;
  * <p>
  * 模型会按 token 流式输出，单个 JSON 行可能被拆成多段。
  * 该解析器按真实换行符切分 block：只有遇到真实换行后，才认为这一行 JSON 完整。
- * JSON 字符串字段中的换行必须由模型输出为转义字符 \\n，不能输出真实换行。
+ * JSON 字符串字段中的换行必须由模型输出为转义字符 \n，不能输出真实换行。
  */
 public class ChatStreamBlockParser {
 
