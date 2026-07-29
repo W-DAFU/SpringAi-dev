@@ -19,21 +19,21 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 class CardResponseControllerTest {
 
     @Test
-    void chatAcceptsUserIdUserTypeAndMessage() throws Exception {
+    void chatAcceptsUserIdentityUserIdAndMessage() throws Exception {
         CardResponseService cardResponseService = mock(CardResponseService.class);
-        CardChatRequest request = new CardChatRequest("u1001", "resume", "生成简历卡片");
+        CardChatRequest request = new CardChatRequest("u1001", "job_seeker", "帮我找岗位");
         when(cardResponseService.chat(eq(request)))
-                .thenReturn(new CardChatResponse("简历", "{\"name\":\"张三\"}", "已生成简历卡片"));
+                .thenReturn(new CardChatResponse("岗位", "{\"title\":\"Java后端开发工程师\"}", "已经为你找到匹配岗位。"));
         MockMvc mockMvc = standaloneSetup(new CardResponseController(cardResponseService)).build();
 
         mockMvc.perform(post("/api/card/chat")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {"userId":"u1001","userType":"resume","message":"生成简历卡片"}
+                                {"userId":"u1001","userType":"job_seeker","message":"帮我找岗位"}
                                 """))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
-                        {"messageType":"简历","results":"{\\"name\\":\\"张三\\"}","message":"已生成简历卡片"}
+                        {"messageType":"岗位","results":"{\\"title\\":\\"Java后端开发工程师\\"}","message":"已经为你找到匹配岗位。"}
                         """));
 
         verify(cardResponseService).chat(eq(request));
