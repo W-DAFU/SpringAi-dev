@@ -2,6 +2,7 @@ package com.voice.domain.vo;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * 流式聊天解析后的业务 block。
@@ -13,6 +14,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class ChatStreamBlockVo extends ChatMessageVo {
 
     /**

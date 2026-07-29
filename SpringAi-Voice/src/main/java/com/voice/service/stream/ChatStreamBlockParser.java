@@ -28,8 +28,15 @@ public class ChatStreamBlockParser {
      */
     private final StringBuilder buffer = new StringBuilder();
 
-    public ChatStreamBlockParser(ObjectMapper objectMapper) {
+    /**
+     * 商品卡片查询服务。
+     * product_card block 解析完成后，会用 query 查询可渲染的商品 JSON。
+     */
+    private final StreamProductCardService streamProductCardService;
+
+    public ChatStreamBlockParser(ObjectMapper objectMapper, StreamProductCardService streamProductCardService) {
         this.objectMapper = objectMapper;
+        this.streamProductCardService = streamProductCardService;
     }
 
     /**
@@ -83,7 +90,11 @@ public class ChatStreamBlockParser {
 
         switch (type) {
             case "text" -> block.setAnswerText(requiredText(node, "text"));
-            case "product_card" -> block.setAnswerText(requiredText(node, "query"));
+            case "product_card" -> {
+                String query = requiredText(node, "query");
+                // 查询接口信息返回 JSON 数据，前端按 product_card 类型渲染卡片。
+                block.setAnswerText(streamProductCardService.searchProductJson(query));
+            }
             default -> throw new IOException("不支持的流式 block 类型：" + type);
         }
 

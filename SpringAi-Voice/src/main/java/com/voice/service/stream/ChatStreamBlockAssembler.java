@@ -1,5 +1,7 @@
 package com.voice.service.stream;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.voice.domain.bo.ChatMessageBo;
 import com.voice.domain.vo.ChatStreamBlockVo;
 import org.springframework.ai.audio.tts.TextToSpeechModel;
@@ -14,6 +16,11 @@ import java.util.Base64;
  */
 @Service
 public class ChatStreamBlockAssembler {
+
+    /**
+     * JSON 工具，用于打印实际返回给前端的 block 协议。
+     */
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     /**
      * 文字转语音模型。
@@ -42,8 +49,19 @@ public class ChatStreamBlockAssembler {
             block.setAnswerAudioFormat("mp3");
             block.setAnswerAudioBase64(Base64.getEncoder().encodeToString(audioBytes));
         }
-
+        System.out.println("=====流式返回协议：" + toProtocolJson(block));
         return block;
+    }
+
+    /**
+     * 转成 JSON，方便检查前端实际接收的协议字段。
+     */
+    private String toProtocolJson(ChatStreamBlockVo block) {
+        try {
+            return OBJECT_MAPPER.writeValueAsString(block);
+        } catch (JsonProcessingException exception) {
+            return block.toString();
+        }
     }
 
 }

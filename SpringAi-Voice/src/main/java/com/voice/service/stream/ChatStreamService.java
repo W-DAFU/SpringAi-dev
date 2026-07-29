@@ -42,12 +42,20 @@ public class ChatStreamService {
      */
     private final ChatStreamBlockAssembler chatStreamBlockAssembler;
 
+    /**
+     * 商品卡片查询服务。
+     * 当前按用户要求传入 ChatStreamBlockParser，在解析 product_card 时查询商品 JSON。
+     */
+    private final StreamProductCardService streamProductCardService;
+
     public ChatStreamService(ChatClient.Builder chatClientBuilder,
                              ChatInputResolver chatInputResolver,
-                             ChatStreamBlockAssembler chatStreamBlockAssembler) {
+                             ChatStreamBlockAssembler chatStreamBlockAssembler,
+                             StreamProductCardService streamProductCardService) {
         this.chatClient = chatClientBuilder.build();
         this.chatInputResolver = chatInputResolver;
         this.chatStreamBlockAssembler = chatStreamBlockAssembler;
+        this.streamProductCardService = streamProductCardService;
     }
 
     /**
@@ -62,7 +70,7 @@ public class ChatStreamService {
      */
     public Flux<ChatStreamBlockVo> stream(ChatMessageBo chat) {
         String inputText = chatInputResolver.resolveInputText(chat);
-        ChatStreamBlockParser parser = new ChatStreamBlockParser(objectMapper);
+        ChatStreamBlockParser parser = new ChatStreamBlockParser(objectMapper, streamProductCardService);
 
         Flux<ChatStreamBlockVo> parsedBlocks = chatClient.prompt()
                 .system(STREAM_SYSTEM_PROMPT)
