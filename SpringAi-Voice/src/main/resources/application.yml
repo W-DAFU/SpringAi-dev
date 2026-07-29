@@ -4,7 +4,7 @@ server:
 spring:
   application:
     # Spring Boot 应用名称，主要用于日志、监控、服务注册等场景。
-    name: YE01
+    name: SpringAi-Voice
 
   ai:
     # 模型供应商选择器。

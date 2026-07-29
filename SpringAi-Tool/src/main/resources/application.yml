@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: SpringAi-Tool
+
+
+  ai:
+    openai:
+      chat:
+        model: deepseek-ai/DeepSeek-V4-Flash
+        base-url: https://api.siliconflow.cn/v1
+        api-key: ${SILICONFLOW_API_KEY:sk-fgwmxxx}
+

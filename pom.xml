@@ -49,6 +49,8 @@
 
     <modules>
         <module>SpringAi-Voice</module>
+        <module>SpringAi-Tool</module>
+
     </modules>
 
     <build>
