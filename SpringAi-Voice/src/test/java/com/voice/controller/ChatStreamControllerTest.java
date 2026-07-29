@@ -1,6 +1,7 @@
 package com.voice.controller;
 
 import com.voice.commons.domain.bo.ChatMessageBo;
+import com.voice.commons.domain.vo.ChatStreamBlockVo;
 import com.voice.service.ChatStreamService;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
@@ -15,18 +16,24 @@ import static org.mockito.Mockito.when;
 class ChatStreamControllerTest {
 
     @Test
-    void streamReturnsChunksFromStreamService() {
+    void streamReturnsBlocksFromStreamService() {
         ChatStreamService chatStreamService = mock(ChatStreamService.class);
         ChatStreamController controller = new ChatStreamController(chatStreamService);
         ChatMessageBo chat = new ChatMessageBo();
         chat.setMessageType(ChatMessageBo.MessageType.TEXT);
         chat.setText("hello");
+        ChatStreamBlockVo textBlock = new ChatStreamBlockVo();
+        textBlock.setCardType("text");
+        textBlock.setAnswerText("你好");
+        ChatStreamBlockVo productBlock = new ChatStreamBlockVo();
+        productBlock.setCardType("product_card");
+        productBlock.setAnswerText("华为儿童手表5活力版");
 
-        when(chatStreamService.stream(chat)).thenReturn(Flux.just("你", "好"));
+        when(chatStreamService.stream(chat)).thenReturn(Flux.just(textBlock, productBlock));
 
-        List<String> chunks = controller.stream(chat).collectList().block();
+        List<ChatStreamBlockVo> chunks = controller.stream(chat).collectList().block();
 
-        assertThat(chunks).containsExactly("你", "好");
+        assertThat(chunks).containsExactly(textBlock, productBlock);
         verify(chatStreamService).stream(chat);
     }
 

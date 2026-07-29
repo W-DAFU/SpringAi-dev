@@ -1,6 +1,7 @@
 package com.voice.controller;
 
 import com.voice.commons.domain.bo.ChatMessageBo;
+import com.voice.commons.domain.vo.ChatStreamBlockVo;
 import com.voice.service.ChatStreamService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,17 +35,17 @@ public class ChatStreamController {
      * 请求格式必须是 multipart/form-data。
      * 文字聊天传 messageType=TEXT 和 text；
      * 语音聊天传 messageType=AUDIO 和 audioFile。
-     * 返回值是 text/event-stream 文本分片，不套用普通 R 响应包装。
+     * 返回值是 text/event-stream 业务 block，不套用普通 R 响应包装。
      *
      * @param chat 聊天请求参数
-     * @return AI 回复文本分片流
+     * @return AI 回复业务 block 流
      */
     @PostMapping(
             value = "chat/stream",
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.TEXT_EVENT_STREAM_VALUE
     )
-    public Flux<String> stream(@ModelAttribute ChatMessageBo chat) {
+    public Flux<ChatStreamBlockVo> stream(@ModelAttribute ChatMessageBo chat) {
         return chatStreamService.stream(chat);
     }
 
