@@ -50,6 +50,7 @@
     <modules>
         <module>SpringAi-Voice</module>
         <module>SpringAi-Tool</module>
+        <module>SpringAi-Milvus</module>
 
     </modules>
 

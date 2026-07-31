@@ -1,1 +1,29 @@
-spring.application.name=SpringAi-Milvus
+spring:
+  application:
+    name: SpringAi-Milvus
+
+  ai:
+    openai:
+      base-url: https://api.siliconflow.cn/v1
+      api-key: ${SILICONFLOW_API_KEY}
+      embedding:
+        model: BAAI/bge-large-zh-v1.5
+        api-key: ${SILICONFLOW_API_KEY}
+        base-url: https://api.siliconflow.cn/v1
+
+    vectorstore:
+      milvus:
+        client:
+          host: localhost
+          port: 19530
+          # username: "root"
+          # password: "milvus"
+        database-name: default
+        collection-name: Test_Vector_Store
+        embedding-dimension: 1024
+        index-type: IVF_FLAT
+        metric-type: COSINE
+        initialize-schema: true
+server:
+  port: 8080
+
