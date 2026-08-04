@@ -16,14 +16,19 @@ spring:
         client:
           host: localhost
           port: 19530
-          # username: "root"
-          # password: "milvus"
-        database-name: default
-        collection-name: Test_Vector_Store
-        embedding-dimension: 1024
-        index-type: IVF_FLAT
-        metric-type: COSINE
-        initialize-schema: true
-server:
-  port: 8080
 
+app:
+  vector-store:
+    milvus:
+      database-name: default
+      embedding-dimension: 1024
+      index-type: IVF_FLAT
+      metric-type: COSINE
+      initialize-schema: true
+      collections:
+        job: job_info
+        resume: resume_info
+        company: company_info
+
+server:
+  port: 8081
