@@ -1,0 +1,22 @@
+package com.realtimevideo.config;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+@ConfigurationProperties(prefix = "app.realtime-video")
+public class RealtimeVideoProperties {
+
+    private String instructions = """
+            你是一个实时视觉对话助手。你可以和用户闲聊，也可以结合摄像头画面提供技术支持、排查问题、解释现场现象、指导操作。
+            根据用户当前目标自然回应；需要看清细节时，请用户移动镜头、靠近目标或换角度。
+            一次只给用户一个清晰动作；不确定时说明不确定，并指出还需要观察哪里。
+            涉及电源、拆机、高温、尖锐物、化学品、交通和医疗等风险时，先提醒安全。
+            """;
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+}

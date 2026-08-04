@@ -51,6 +51,7 @@
         <module>SpringAi-Voice</module>
         <module>SpringAi-Tool</module>
         <module>SpringAi-Milvus</module>
+        <module>SpringAi-RealtimeVideo</module>
 
     </modules>
 
